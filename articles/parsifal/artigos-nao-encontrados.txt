@@ -1,0 +1,53 @@
+Document details - A Review of Fake News Detection Using Machine Learning Techniques
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85116641082&doi=10.1109%2fICESC51422.2021.9532796&origin=inward&txGid=5d56d66c10d88d620344f054301a638f
+
+
+Document details - An Explainable Fake News Detector Based on Named Entity Recognition and Stance Classification Applied to COVID-19
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85126568633&doi=10.3390%2finfo13030137&origin=inward&txGid=ad167da7414289ae7c0ff4e03161d360
+
+Document details - Fake news detection on Twitter
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85138133063&doi=10.1108%2fIJWIS-02-2022-0044&origin=inward&txGid=dd122e76bfd01cd399d9d0bb54903632
+
+
+Document details - Natural language processing based online fake news detection challenges - A detailed review
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85091341471&doi=10.1109%2fICCES48766.2020.09137915&origin=inward&txGid=77ec828052547952c2a11fa7961801e4
+
+Document details - Fake News Detection using Machine Learning and Natural Language Processing
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85125326375&doi=10.1109%2fICTAI53825.2021.9673378&origin=inward&txGid=81c747fc0322a1a4c299cf299b2a934b
+
+
+Document details - COVID-19 Fake News Detection Using GloVe and Bi-LSTM
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85126220892&doi=10.1007%2f978-981-16-7657-4_5&origin=inward&txGid=94e15dd1e1a319c569dbaa14fcddd7c7
+
+
+Document details - An Ensemble Method-Based Machine Learning Approach Using Text Mining to Identify Semantic Fake News
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85120875112&doi=10.1007%2f978-981-16-6636-0_55&origin=inward&txGid=8cee6b656fd6ddd00ae84fa968f2fa08
+
+
+Document details - Bi-directional Long Short-Term Memory Network for Fake News Detection from Social Media
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85128877858&doi=10.1007%2f978-981-16-9873-6_42&origin=inward&txGid=47a40052daa2672fe5826782844c559c
+
+Document details - Fake News Detection of South African COVID-19 Related Tweets using Machine Learning
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85138009983&doi=10.1109%2ficABCD54961.2022.9856272&origin=inward&txGid=6ca322815446add74e3add7be3a3a121
+
+Document details - Fake News Spreaders Detection: Sometimes Attention Is Not All You Need
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85138690007&doi=10.3390%2finfo13090426&origin=inward&txGid=df21347b2481f0d2fdfdac2be2a81d53
+
+
+Document details - A Survey on Role of Machine Learning and NLP in Fake News Detection on Social Media
+
+https://www.scopus.com/record/display.uri?eid=2-s2.0-85119097147&doi=10.1109%2fGUCON50781.2021.9573875&origin=inward&txGid=4a1cd4a6636e717e1d361568df4e655a
+
+
+
+
