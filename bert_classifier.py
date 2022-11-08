@@ -7,6 +7,8 @@ from torch.optim import Adam
 from tqdm import tqdm
 
 
+BERT_MODEL = 'neuralmind/bert-base-portuguese-cased' #'neuralmind/bert-base-portuguese-cased'  #'neuralmind/bert-large-portuguese-cased'  #'bert-base-cased' 
+
 datapath = 'Fake.br-Corpus-master/preprocessed/pre-processed.csv'
 df = pd.read_csv(datapath)
 df.head()
@@ -14,7 +16,7 @@ df.head()
 df.groupby(['label']).size().plot.bar()
 
 
-tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+tokenizer = BertTokenizer.from_pretrained(BERT_MODEL) 
 labels = {'fake':0,
           'true':1,
           }
@@ -59,7 +61,7 @@ class BertClassifier(nn.Module):
 
         super(BertClassifier, self).__init__()
 
-        self.bert = BertModel.from_pretrained('bert-base-cased')
+        self.bert = BertModel.from_pretrained(BERT_MODEL)
         self.dropout = nn.Dropout(dropout)
         self.linear = nn.Linear(768, 5)
         self.relu = nn.ReLU()
@@ -91,7 +93,7 @@ def train(model, train_data, val_data, learning_rate, epochs):
     optimizer = Adam(model.parameters(), lr= learning_rate)
 
     if use_cuda:
-
+        print('\n\n-Utilizando cuda\n')
         model = model.cuda()
         criterion = criterion.cuda()
 
@@ -151,7 +153,7 @@ def evaluate(model, test_data):
     device = torch.device("cuda" if use_cuda else "cpu")
 
     if use_cuda:
-
+        print('\n\n-Utilizando cuda\n')
         model = model.cuda()
 
     total_acc_test = 0
@@ -179,7 +181,7 @@ df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=42),
 
 print(len(df_train),len(df_val), len(df_test))
 
-EPOCHS = 5
+EPOCHS = 2
 model = BertClassifier()
 LR = 1e-6
               
