@@ -9,7 +9,8 @@ from tqdm import tqdm
 
 BERT_MODEL = 'neuralmind/bert-base-portuguese-cased' #'neuralmind/bert-base-portuguese-cased'  #'neuralmind/bert-large-portuguese-cased'  #'bert-base-cased' 
 
-datapath = 'Fake.br-Corpus-master/preprocessed/pre-processed.csv'
+# datapath = 'Fake.br-Corpus-master/preprocessed/pre-processed.csv'
+datapath = 'dataset-full.csv'
 df = pd.read_csv(datapath)
 df.head()
 
@@ -181,7 +182,7 @@ df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=42),
 
 print(len(df_train),len(df_val), len(df_test))
 
-EPOCHS = 2
+EPOCHS = 5
 model = BertClassifier()
 LR = 1e-6
               
