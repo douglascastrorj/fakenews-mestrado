@@ -5,6 +5,7 @@ from transformers import BertTokenizer, BertModel
 from torch import nn
 from torch.optim import Adam
 from tqdm import tqdm
+import time
 
 
 BERT_MODEL = 'neuralmind/bert-base-portuguese-cased' #'neuralmind/bert-base-portuguese-cased'  #'neuralmind/bert-large-portuguese-cased'  #'bert-base-cased' 
@@ -157,6 +158,9 @@ def evaluate(model, test_data):
         print('\n\n-Utilizando cuda\n')
         model = model.cuda()
 
+    print('Calculating performance')
+    resultFile = open('result.csv', 'w')
+    resultFile.write('target,predicted\n')
     total_acc_test = 0
     with torch.no_grad():
 
@@ -168,21 +172,26 @@ def evaluate(model, test_data):
 
             output = model(input_id, mask)
 
+            resultFile.write(str(int(test_label[0]))+','+str(int(output.argmax(dim=1)[0]))) #printando label e predicted
+            resultFile.write('\n')
+            resultFile.write(str(int(test_label[1]))+','+str(int(output.argmax(dim=1)[1]))) #printando label e predicted
+            resultFile.write('\n')
+
             acc = (output.argmax(dim=1) == test_label).sum().item()
             total_acc_test += acc
     
     print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
-
+    resultFile.close()
 
 #  ------- MAIN --------
 
-np.random.seed(112)
-df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=42), 
+np.random.seed(int(time.time()))
+df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=int(time.time())), 
                                      [int(.8*len(df)), int(.9*len(df))])
 
 print(len(df_train),len(df_val), len(df_test))
 
-EPOCHS = 5
+EPOCHS = 1
 model = BertClassifier()
 LR = 1e-6
               
