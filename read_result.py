@@ -28,19 +28,19 @@ print("Accuracy: ", Accuracy()(preds, target))
 f1 = F1Score(num_classes=3)
 result = f1(preds, target)
 
-print(result)
+print('F1 Score: ', result)
 
 
 #CALCULANDO PRECISION E RECALL
 pr = precision_recall(preds, target, average='macro', num_classes=2)
 
-print(pr)
+print('Precision and Recall (Macro):', pr)
 
 pr = precision_recall(preds, target, average='micro')
 
-print(pr)
+print('Precision and Recall (Micro):', pr)
 
 
 # CALCULANDO MATRIZ DE CONFUSAO
 confmat = ConfusionMatrix(num_classes=2)
-print(confmat(preds, target))
+print('Confusion Matrix: \n', confmat(preds, target))
