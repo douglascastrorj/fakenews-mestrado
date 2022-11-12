@@ -6,6 +6,7 @@ from torch import nn
 from torch.optim import Adam
 from tqdm import tqdm
 import time
+from datetime import datetime
 
 
 BERT_MODEL = 'neuralmind/bert-base-portuguese-cased' #'neuralmind/bert-base-portuguese-cased'  #'neuralmind/bert-large-portuguese-cased'  #'bert-base-cased' 
@@ -15,7 +16,7 @@ datapath = 'dataset-full.csv'
 df = pd.read_csv(datapath)
 df.head()
 
-df.groupby(['label']).size().plot.bar()
+# df.groupby(['label']).size().plot.bar()
 
 
 tokenizer = BertTokenizer.from_pretrained(BERT_MODEL) 
@@ -82,6 +83,7 @@ class BertClassifier(nn.Module):
 ## funcoes para treinar modelo
 
 def train(model, train_data, val_data, learning_rate, epochs):
+    print('Training model')
 
     train, val = Dataset(train_data), Dataset(val_data)
 
@@ -98,6 +100,8 @@ def train(model, train_data, val_data, learning_rate, epochs):
         print('\n\n-Utilizando cuda\n')
         model = model.cuda()
         criterion = criterion.cuda()
+    else:
+        print('\n\nUtilizando CPU\n\n')
 
     for epoch_num in range(epochs):
 
@@ -146,7 +150,7 @@ def train(model, train_data, val_data, learning_rate, epochs):
                 
 
 def evaluate(model, test_data):
-
+    print('Evaluating model')
     test = Dataset(test_data)
 
     test_dataloader = torch.utils.data.DataLoader(test, batch_size=2)
@@ -157,9 +161,12 @@ def evaluate(model, test_data):
     if use_cuda:
         print('\n\n-Utilizando cuda\n')
         model = model.cuda()
+    else:
+        print('\n\nUtilizando CPU\n\n')
 
-    print('Calculating performance')
-    resultFile = open('result.csv', 'w')
+
+    resultFileName = 'result-'+datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
+    resultFile = open(resultFileName, 'w')
     resultFile.write('target,predicted\n')
     total_acc_test = 0
     with torch.no_grad():
@@ -184,19 +191,22 @@ def evaluate(model, test_data):
     resultFile.close()
 
 #  ------- MAIN --------
-
-np.random.seed(int(time.time()))
-df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=int(time.time())), 
-                                     [int(.8*len(df)), int(.9*len(df))])
-
-print(len(df_train),len(df_val), len(df_test))
-
-EPOCHS = 1
-model = BertClassifier()
+NUM_EXPERIMENTS = 4
+EPOCHS = 10
 LR = 1e-6
-              
-train(model, df_train, df_val, LR, EPOCHS)
+for i in range(0, NUM_EXPERIMENTS):
+    print('Running experiment: #' + str( i + 1))
 
-evaluate(model, df_test)
+    np.random.seed(int(time.time()))
+    df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=int(time.time())), 
+                                        [int(.8*len(df)), int(.9*len(df))])
+
+    # print(len(df_train),len(df_val), len(df_test))
+
+    model = BertClassifier()
+          
+    train(model, df_train, df_val, LR, EPOCHS)
+
+    evaluate(model, df_test)
 
 
