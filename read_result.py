@@ -6,7 +6,7 @@ from torchmetrics.functional import precision_recall
 
 
 #lendo arquivo
-datapath = 'result.csv'
+datapath = 'result-2022-11-19T10:47.csv'
 df = pd.read_csv(datapath)
 
 test = []

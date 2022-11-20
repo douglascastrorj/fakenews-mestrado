@@ -187,12 +187,12 @@ def evaluate(model, test_data):
             acc = (output.argmax(dim=1) == test_label).sum().item()
             total_acc_test += acc
     
-    print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
     resultFile.close()
+    print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
 
 #  ------- MAIN --------
-NUM_EXPERIMENTS = 4
-EPOCHS = 10
+NUM_EXPERIMENTS = 5
+EPOCHS = 5
 LR = 1e-6
 for i in range(0, NUM_EXPERIMENTS):
     print('Running experiment: #' + str( i + 1))
