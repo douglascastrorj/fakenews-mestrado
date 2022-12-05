@@ -66,7 +66,8 @@ class BertClassifier(nn.Module):
 
         self.bert = BertModel.from_pretrained(BERT_MODEL)
         self.dropout = nn.Dropout(dropout)
-        self.linear = nn.Linear(768, 5)
+        self.linear = nn.Linear(768, 2)
+        # self.linear = nn.Conv1d(768, 2, 3, stride=2)
         self.relu = nn.ReLU()
 
     def forward(self, input_id, mask):
@@ -165,7 +166,7 @@ def evaluate(model, test_data):
         print('\n\nUtilizando CPU\n\n')
 
 
-    resultFileName = 'result-'+datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
+    resultFileName = 'result-' + str(LR) + '-' +datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
     resultFile = open(resultFileName, 'w')
     resultFile.write('target,predicted\n')
     total_acc_test = 0
@@ -191,11 +192,11 @@ def evaluate(model, test_data):
     print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
 
 #  ------- MAIN --------
-NUM_EXPERIMENTS = 5
+NUM_EXPERIMENTS = 1
 EPOCHS = 5
-LR = 1e-6
+LR = 1e-5
 for i in range(0, NUM_EXPERIMENTS):
-    print('Running experiment: #' + str( i + 1))
+    print('Running experiment: #' + str( i + 1) + 'LR: ' + str(LR) + ' EPOCHS: ' + str(EPOCHS))
 
     np.random.seed(int(time.time()))
     df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=int(time.time())), 

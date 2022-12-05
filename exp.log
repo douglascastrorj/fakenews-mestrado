@@ -1,0 +1,261 @@
+2022-11-19 11:19:24.845726: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-11-19 11:19:24.973076: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2022-11-19 11:19:25.345572: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/home/douglas/miniconda3/envs/tf/lib/
+2022-11-19 11:19:25.345619: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/home/douglas/miniconda3/envs/tf/lib/
+2022-11-19 11:19:25.345641: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Running experiment: #1
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|███████████████████████████████████████| 2880/2880 [14:06<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.260 | Train Accuracy:  0.858 | Val Loss:  0.074 | Val Accuracy:  0.967
+100%|███████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 2 | Train Loss:  0.041 | Train Accuracy:  0.983 | Val Loss:  0.026 | Val Accuracy:  0.990
+100%|███████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 3 | Train Loss:  0.012 | Train Accuracy:  0.997 | Val Loss:  0.045 | Val Accuracy:  0.972
+100%|███████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 4 | Train Loss:  0.005 | Train Accuracy:  0.999 | Val Loss:  0.012 | Val Accuracy:  0.992
+100%|███████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 5 | Train Loss:  0.002 | Train Accuracy:  1.000 | Val Loss:  0.016 | Val Accuracy:  0.993
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.979
+Running experiment: #2
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.203 | Train Accuracy:  0.934 | Val Loss:  0.054 | Val Accuracy:  0.985
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 2 | Train Loss:  0.026 | Train Accuracy:  0.993 | Val Loss:  0.028 | Val Accuracy:  0.986
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 3 | Train Loss:  0.008 | Train Accuracy:  0.998 | Val Loss:  0.021 | Val Accuracy:  0.988
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 4 | Train Loss:  0.003 | Train Accuracy:  0.999 | Val Loss:  0.032 | Val Accuracy:  0.985
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 5 | Train Loss:  0.002 | Train Accuracy:  1.000 | Val Loss:  0.028 | Val Accuracy:  0.986
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.993
+Running experiment: #3
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 1 | Train Loss:  0.240 | Train Accuracy:  0.894 | Val Loss:  0.049 | Val Accuracy:  0.985
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 2 | Train Loss:  0.027 | Train Accuracy:  0.990 | Val Loss:  0.014 | Val Accuracy:  0.994
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 3 | Train Loss:  0.009 | Train Accuracy:  0.997 | Val Loss:  0.008 | Val Accuracy:  0.996
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 4 | Train Loss:  0.003 | Train Accuracy:  0.999 | Val Loss:  0.004 | Val Accuracy:  0.997
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 5 | Train Loss:  0.001 | Train Accuracy:  1.000 | Val Loss:  0.002 | Val Accuracy:  0.999
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.993
+Running experiment: #4
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.226 | Train Accuracy:  0.910 | Val Loss:  0.055 | Val Accuracy:  0.982
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 2 | Train Loss:  0.026 | Train Accuracy:  0.991 | Val Loss:  0.021 | Val Accuracy:  0.992
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 3 | Train Loss:  0.008 | Train Accuracy:  0.998 | Val Loss:  0.015 | Val Accuracy:  0.994
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 4 | Train Loss:  0.003 | Train Accuracy:  0.999 | Val Loss:  0.015 | Val Accuracy:  0.993
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 5 | Train Loss:  0.001 | Train Accuracy:  1.000 | Val Loss:  0.017 | Val Accuracy:  0.993
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.990
+Running experiment: #5
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.seq_relationship.bias', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|███████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 1 | Train Loss:  0.220 | Train Accuracy:  0.894 | Val Loss:  0.036 | Val Accuracy:  0.989
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 2 | Train Loss:  0.030 | Train Accuracy:  0.988 | Val Loss:  0.013 | Val Accuracy:  0.993
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 3 | Train Loss:  0.010 | Train Accuracy:  0.997 | Val Loss:  0.005 | Val Accuracy:  0.999
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 4 | Train Loss:  0.004 | Train Accuracy:  0.999 | Val Loss:  0.005 | Val Accuracy:  0.994
+100%|███████████████████████████████████████| 2880/2880 [14:09<00:00,  3.39it/s]
+Epochs: 5 | Train Loss:  0.001 | Train Accuracy:  1.000 | Val Loss:  0.003 | Val Accuracy:  0.999
+Evaluating model
+
+
+-Utilizando cuda
+(tf) douglas@douglas-MS-7B28:~/Documents/Mestrado/fakenews-mestrado$ python bert_classifier.py 
+2022-11-19 21:31:11.661347: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-11-19 21:31:11.786550: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2022-11-19 21:31:12.160836: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/home/douglas/miniconda3/envs/tf/lib/
+2022-11-19 21:31:12.160885: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory; LD_LIBRARY_PATH: :/home/douglas/miniconda3/envs/tf/lib/
+2022-11-19 21:31:12.160891: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+Running experiment: #1
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|█████████████████████████████████████████████| 2880/2880 [14:05<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.233 | Train Accuracy:  0.865 | Val Loss:  0.064 | Val Accuracy:  0.964
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 2 | Train Loss:  0.039 | Train Accuracy:  0.981 | Val Loss:  0.030 | Val Accuracy:  0.981
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 3 | Train Loss:  0.014 | Train Accuracy:  0.994 | Val Loss:  0.026 | Val Accuracy:  0.988
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 4 | Train Loss:  0.007 | Train Accuracy:  0.997 | Val Loss:  0.022 | Val Accuracy:  0.990
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 5 | Train Loss:  0.003 | Train Accuracy:  0.999 | Val Loss:  0.022 | Val Accuracy:  0.989
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.990
+Running experiment: #2
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.237 | Train Accuracy:  0.886 | Val Loss:  0.069 | Val Accuracy:  0.967
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 2 | Train Loss:  0.039 | Train Accuracy:  0.982 | Val Loss:  0.028 | Val Accuracy:  0.986
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 3 | Train Loss:  0.014 | Train Accuracy:  0.994 | Val Loss:  0.019 | Val Accuracy:  0.990
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 4 | Train Loss:  0.005 | Train Accuracy:  0.998 | Val Loss:  0.018 | Val Accuracy:  0.992
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 5 | Train Loss:  0.002 | Train Accuracy:  0.999 | Val Loss:  0.007 | Val Accuracy:  0.994
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.997
+Running experiment: #3
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.240 | Train Accuracy:  0.885 | Val Loss:  0.058 | Val Accuracy:  0.976
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 2 | Train Loss:  0.032 | Train Accuracy:  0.987 | Val Loss:  0.031 | Val Accuracy:  0.986
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 3 | Train Loss:  0.012 | Train Accuracy:  0.996 | Val Loss:  0.015 | Val Accuracy:  0.993
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.39it/s]
+Epochs: 4 | Train Loss:  0.004 | Train Accuracy:  0.999 | Val Loss:  0.019 | Val Accuracy:  0.990
+100%|█████████████████████████████████████████████| 2880/2880 [14:08<00:00,  3.40it/s]
+Epochs: 5 | Train Loss:  0.002 | Train Accuracy:  0.999 | Val Loss:  0.015 | Val Accuracy:  0.993
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.990
+Running experiment: #4
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|█████████████████████████████████████████████| 2880/2880 [14:06<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.221 | Train Accuracy:  0.912 | Val Loss:  0.044 | Val Accuracy:  0.986
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 2 | Train Loss:  0.028 | Train Accuracy:  0.991 | Val Loss:  0.019 | Val Accuracy:  0.989
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 3 | Train Loss:  0.008 | Train Accuracy:  0.999 | Val Loss:  0.008 | Val Accuracy:  0.996
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 4 | Train Loss:  0.003 | Train Accuracy:  0.999 | Val Loss:  0.006 | Val Accuracy:  0.994
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 5 | Train Loss:  0.001 | Train Accuracy:  1.000 | Val Loss:  0.005 | Val Accuracy:  0.993
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.994
+Running experiment: #5
+Some weights of the model checkpoint at neuralmind/bert-base-portuguese-cased were not used when initializing BertModel: ['cls.predictions.decoder.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Training model
+
+
+-Utilizando cuda
+
+100%|█████████████████████████████████████████████| 2880/2880 [14:06<00:00,  3.40it/s]
+Epochs: 1 | Train Loss:  0.218 | Train Accuracy:  0.914 | Val Loss:  0.047 | Val Accuracy:  0.983
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 2 | Train Loss:  0.025 | Train Accuracy:  0.992 | Val Loss:  0.021 | Val Accuracy:  0.992
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 3 | Train Loss:  0.008 | Train Accuracy:  0.998 | Val Loss:  0.018 | Val Accuracy:  0.993
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 4 | Train Loss:  0.003 | Train Accuracy:  0.999 | Val Loss:  0.016 | Val Accuracy:  0.992
+100%|█████████████████████████████████████████████| 2880/2880 [14:07<00:00,  3.40it/s]
+Epochs: 5 | Train Loss:  0.002 | Train Accuracy:  0.999 | Val Loss:  0.017 | Val Accuracy:  0.992
+Evaluating model
+
+
+-Utilizando cuda
+
+Test Accuracy:  0.992
