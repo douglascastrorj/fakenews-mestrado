@@ -1,11 +1,11 @@
 from torch import nn
 from transformers import GPT2Model
 
-class GptClassifier(nn.Module):
+class GPTClassifier(nn.Module):
 
     def __init__(self, dropout=0.5):
         
-        super(GptClassifier, self).__init__()
+        super(GPTClassifier, self).__init__()
 
         self.gpt = GPT2Model.from_pretrained('gpt2')
         self.dropout = nn.Dropout(dropout)
