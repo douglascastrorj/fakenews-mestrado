@@ -5,20 +5,29 @@ from torch.optim import Adam
 from tqdm import tqdm
 from datetime import datetime
 from BertClassifier import BertClassifier
-from GPTClassifier import GPTClassifier
+from GPTClassifier import GPTClassifier, SimpleGPT2SequenceClassifier
 from ModelTrainer import ModelTrainer
+from GPTTrainer import GPTTrainer
 from ModelEvaluator import ModelEvaluator
 from transformers import BertTokenizer, GPT2Tokenizer
 import time
 
-datapath = 'dataset-half.csv'
+datapath = 'dataset-full.csv'
 df = pd.read_csv(datapath)
 
 
 BERT_MODEL = 'neuralmind/bert-base-portuguese-cased'  #'n
-# tokenizer = BertTokenizer.from_pretrained(BERT_MODEL) 
+GPT_MODEL = 'pierreguillou/gpt2-small-portuguese' #'gpt2'
 
-tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
+def getGPTTokenizer():
+    tokenizer = GPT2Tokenizer.from_pretrained(GPT_MODEL)
+    tokenizer.padding_side = "left"
+    tokenizer.pad_token = tokenizer.eos_token
+    return tokenizer
+
+# tokenizer = BertTokenizer.from_pretrained(BERT_MODEL) 
+tokenizer = getGPTTokenizer()
+
 
 labels = {'fake':0,
           'true':1,
@@ -35,7 +44,8 @@ for i in range(0, NUM_EXPERIMENTS):
                                         [int(.8*len(df)), int(.9*len(df))])
 
     # model = BertClassifier(BERT_MODEL)
-    model = GPTClassifier()
+    # model = GPTClassifier()
+    model = SimpleGPT2SequenceClassifier(num_classes=2, gpt_model_name=GPT_MODEL)
     trainer = ModelTrainer(tokenizer, labels)  
     trainer.train(model, df_train, df_val, LR, EPOCHS)
 
