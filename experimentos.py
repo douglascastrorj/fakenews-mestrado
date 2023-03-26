@@ -34,7 +34,7 @@ labels = {'fake':0,
           }
 
 NUM_EXPERIMENTS = 1
-EPOCHS = 1
+EPOCHS = 5
 LR = 1e-6
 for i in range(0, NUM_EXPERIMENTS):
     print('Running experiment: #' + str( i + 1))
@@ -50,4 +50,4 @@ for i in range(0, NUM_EXPERIMENTS):
     trainer.train(model, df_train, df_val, LR, EPOCHS)
 
     evaluator = ModelEvaluator(tokenizer, labels)
-    evaluator.evaluate(model, df_test)
+    evaluator.evaluate('GPT', model, df_test)

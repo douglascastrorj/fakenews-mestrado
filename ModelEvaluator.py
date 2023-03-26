@@ -17,7 +17,7 @@ class ModelEvaluator:
         self.labels = labels
 
 
-    def evaluate(self, model, test_data):
+    def evaluate(self, modelName, model, test_data):
         print('Evaluating model')
         test = Dataset(test_data, self.tokenizer, self.labels)
 
@@ -33,7 +33,7 @@ class ModelEvaluator:
             print('\n\nUtilizando CPU\n\n')
 
 
-        resultFileName = 'result-'+datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
+        resultFileName = 'result-' + modelName +'-' +datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
         resultFile = open(resultFileName, 'w')
         resultFile.write('target,predicted\n')
         total_acc_test = 0

@@ -29,7 +29,7 @@ class ModelTrainer:
         optimizer = Adam(model.parameters(), lr= learning_rate)
 
         if use_cuda:
-            print('\n\n-Utilizando cuda\n')
+            print('\n\n-Utilizando CUDA\n')
             model = model.cuda()
             criterion = criterion.cuda()
         else:
