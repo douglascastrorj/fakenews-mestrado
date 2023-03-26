@@ -55,4 +55,4 @@ for i in range(0, NUM_EXPERIMENTS):
     torch.save(model.state_dict(), 'models/'+GPT_MODEL+'-'+datetime.now().strftime("%Y-%m-%dT%H:%M")+'.model')
 
     evaluator = ModelEvaluator(tokenizer, labels)
-    evaluator.evaluate('GPT', model, df_train)
+    evaluator.evaluate('GPT', model, df_test)
