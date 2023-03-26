@@ -13,7 +13,7 @@ from transformers import BertTokenizer, GPT2Tokenizer
 import time
 from liardataset import loadLiarDataFrame, getLiarLabels
 
-datapath = 'dataset-full.csv'
+datapath = 'liar-test.csv'
 df = pd.read_csv(datapath)
 
 
@@ -42,16 +42,17 @@ LR = 1e-6
 for i in range(0, NUM_EXPERIMENTS):
     print('Running experiment: #' + str( i + 1))
 
-    # np.random.seed(int(time.time()))
-    # df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=int(time.time())), 
-    #                                     [int(.8*len(df)), int(.9*len(df))])
-    df_train, df_val, df_test = loadLiarDataFrame()
+    np.random.seed(int(time.time()))
+    df_train, df_val, df_test = np.split(df.sample(frac=1, random_state=int(time.time())), 
+                                        [int(.8*len(df)), int(.9*len(df))])
+    # df_train, df_val, df_test = loadLiarDataFrame()
 
     # model = BertClassifier(BERT_MODEL)
-    # model = GPTClassifier()
     model = SimpleGPT2SequenceClassifier(num_classes=2, gpt_model_name=GPT_MODEL)
     trainer = ModelTrainer(tokenizer, labels)  
-    trainer.train(model, df_train, df_val, LR, EPOCHS, batch_size=3)
+    trainer.train(model, df_train, df_val, LR, EPOCHS, batch_size=2)
+
+    torch.save(model.state_dict(), 'models/'+GPT_MODEL+'-'+datetime.now().strftime("%Y-%m-%dT%H:%M")+'.model')
 
     evaluator = ModelEvaluator(tokenizer, labels)
-    evaluator.evaluate('GPT', model, df_test)
+    evaluator.evaluate('GPT', model, df_train)
