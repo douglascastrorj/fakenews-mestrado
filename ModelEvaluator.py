@@ -16,8 +16,15 @@ class ModelEvaluator:
         self.tokenizer = tokenizer
         self.labels = labels
 
+    def saveResults(self, target, predicted, modelName):
+        resultFileName = 'results/result-' + modelName +'-' +datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
+        resultFile = open(resultFileName, 'w')
+        resultFile.write('target,predicted\n')
+        for i in range(len(target)):
+            resultFile.write(f'{target[i]},{predicted[i]}' + '\n')
+        resultFile.close()
 
-    def evaluate(self, modelName, model, test_data, batch_size=2):
+    def evaluate(self, modelName, model, test_data, batch_size=2, save=True):
         print('Evaluating model')
         test = Dataset(test_data, self.tokenizer, self.labels)
 
@@ -53,10 +60,7 @@ class ModelEvaluator:
         
         print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
 
+        if save:
+            self.saveResults(target, predicted, modelName)
 
-        resultFileName = 'result-' + modelName +'-' +datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
-        resultFile = open(resultFileName, 'w')
-        resultFile.write('target,predicted\n')
-        for i in range(len(target)):
-            resultFile.write(f'{target[i]},{predicted[i]}' + '\n')
-        resultFile.close()
+        return target, predicted
