@@ -14,13 +14,13 @@ class ModelTrainer:
         self.tokenizer = tokenizer
         self.labels = labels
 
-    def train(self, model, train_data, val_data, learning_rate, epochs):
+    def train(self, model, train_data, val_data, learning_rate, epochs, batch_size=2):
         print('Training model')
 
         train, val = Dataset(train_data, self.tokenizer, self.labels), Dataset(val_data, self.tokenizer, self.labels)
 
-        train_dataloader = torch.utils.data.DataLoader(train, batch_size=2, shuffle=True)
-        val_dataloader = torch.utils.data.DataLoader(val, batch_size=2)
+        train_dataloader = torch.utils.data.DataLoader(train, batch_size=batch_size, shuffle=True)
+        val_dataloader = torch.utils.data.DataLoader(val, batch_size=batch_size)
 
         use_cuda = torch.cuda.is_available()
         device = torch.device("cuda" if use_cuda else "cpu")

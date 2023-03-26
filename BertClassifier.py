@@ -3,7 +3,7 @@ from transformers import BertModel
 
 class BertClassifier(nn.Module):
 
-    def __init__(self, bertModelName, dropout=0.5):
+    def __init__(self, bertModelName, dropout=0.5, num_classes=2):
 
         super(BertClassifier, self).__init__()
 
@@ -12,7 +12,7 @@ class BertClassifier(nn.Module):
         self.nonlinear = nn.Sequential(
             nn.Linear(768, 256),
             nn.ReLU(),
-            nn.Linear(256, 5)
+            nn.Linear(256, num_classes)
         )
 
     def forward(self, input_id, mask):

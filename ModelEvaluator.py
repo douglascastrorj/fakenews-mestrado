@@ -17,11 +17,11 @@ class ModelEvaluator:
         self.labels = labels
 
 
-    def evaluate(self, modelName, model, test_data):
+    def evaluate(self, modelName, model, test_data, batch_size=2):
         print('Evaluating model')
         test = Dataset(test_data, self.tokenizer, self.labels)
 
-        test_dataloader = torch.utils.data.DataLoader(test, batch_size=2)
+        test_dataloader = torch.utils.data.DataLoader(test, batch_size=batch_size)
 
         use_cuda = torch.cuda.is_available()
         device = torch.device("cuda" if use_cuda else "cpu")
