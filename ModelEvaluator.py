@@ -16,12 +16,19 @@ class ModelEvaluator:
         self.tokenizer = tokenizer
         self.labels = labels
 
+    def saveResults(self, target, predicted, modelName):
+        resultFileName = 'results/result-' + modelName +'-' +datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
+        resultFile = open(resultFileName, 'w')
+        resultFile.write('target,predicted\n')
+        for i in range(len(target)):
+            resultFile.write(f'{target[i]},{predicted[i]}' + '\n')
+        resultFile.close()
 
-    def evaluate(self, modelName, model, test_data):
+    def evaluate(self, modelName, model, test_data, batch_size=2, save=True):
         print('Evaluating model')
         test = Dataset(test_data, self.tokenizer, self.labels)
 
-        test_dataloader = torch.utils.data.DataLoader(test, batch_size=2)
+        test_dataloader = torch.utils.data.DataLoader(test, batch_size=batch_size)
 
         use_cuda = torch.cuda.is_available()
         device = torch.device("cuda" if use_cuda else "cpu")
@@ -32,10 +39,8 @@ class ModelEvaluator:
         else:
             print('\n\nUtilizando CPU\n\n')
 
-
-        resultFileName = 'result-' + modelName +'-' +datetime.now().strftime("%Y-%m-%dT%H:%M") + '.csv'
-        resultFile = open(resultFileName, 'w')
-        resultFile.write('target,predicted\n')
+        predicted = []
+        target = []
         total_acc_test = 0
         with torch.no_grad():
 
@@ -47,13 +52,15 @@ class ModelEvaluator:
 
                 output = model(input_id, mask)
 
-                resultFile.write(str(int(test_label[0]))+','+str(int(output.argmax(dim=1)[0]))) #printando label e predicted
-                resultFile.write('\n')
-                resultFile.write(str(int(test_label[1]))+','+str(int(output.argmax(dim=1)[1]))) #printando label e predicted
-                resultFile.write('\n')
+                predicted = predicted + [int(x) for x in output.argmax(dim=1)]
+                target = target + [int(x) for x in test_label]
 
                 acc = (output.argmax(dim=1) == test_label).sum().item()
                 total_acc_test += acc
         
         print(f'Test Accuracy: {total_acc_test / len(test_data): .3f}')
-        resultFile.close()
+
+        if save:
+            self.saveResults(target, predicted, modelName)
+
+        return target, predicted

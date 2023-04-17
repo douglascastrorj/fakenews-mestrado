@@ -9,7 +9,7 @@ class Dataset(torch.utils.data.Dataset):
         self.labels = [labels[label] for label in df['label']]
         self.texts = [tokenizer(text, 
                                padding='max_length', max_length = 512, truncation=True,
-                                return_tensors="pt") for text in df['preprocessed_news']]
+                                return_tensors="pt") for text in df['text']]
 
     def classes(self):
         return self.labels
