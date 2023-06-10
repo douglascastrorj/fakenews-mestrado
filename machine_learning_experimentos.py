@@ -30,19 +30,18 @@ for i in range(0, NUM_EXPERIMENTS):
 
     df_train, df_val, df_test = loadLiarDataFrame()
 
-    
-    df1 = df_train.iloc[:2,:] # remover essa linha (linha apenas para tstar)
+    # df1 = df_train.iloc[:2,:] # remover essa linha (linha apenas para tstar)
 
-    X, y = embed_dataset(df1, labels)
-    y = [0, 1] # remover essa linha (linha apenas para tstar)
+    X, y = embed_dataset(df_train, labels)
+    # y = [0, 1] # remover essa linha (linha apenas para tstar)
 
 
     clf = svm.SVC()
     clf.fit(X, y)
 
-    df2 = df_test.iloc[:2,:] # remover essa linha (linha apenas para tstar)
+    # df2 = df_test.iloc[:2,:] # remover essa linha (linha apenas para tstar)
 
-    X_test, y_true = embed_dataset(df2, labels)
+    X_test, y_true = embed_dataset(df_test, labels)
     y_pred = clf.predict(X_test)
 
     from sklearn.metrics import f1_score
