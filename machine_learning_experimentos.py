@@ -22,7 +22,7 @@ def embed_dataset(dataset, labels):
 
 BERT_MODEL = 'bert-base-uncased'
 
-labels = getLiarLabels(binary=True)
+labels = getLiarLabels(binary=False)
 
 NUM_EXPERIMENTS = 1
 for i in range(0, NUM_EXPERIMENTS):
@@ -36,7 +36,7 @@ for i in range(0, NUM_EXPERIMENTS):
     # y = [0, 1] # remover essa linha (linha apenas para tstar)
 
 
-    clf = svm.SVC()
+    clf = svm.SVC(decision_function_shape='ovo')
     clf.fit(X, y)
 
     # df2 = df_test.iloc[:2,:] # remover essa linha (linha apenas para tstar)
@@ -61,7 +61,7 @@ for i in range(0, NUM_EXPERIMENTS):
 
     print(confusion)
 
-    file_name = 'results/mlexperiments' + datetime.now().strftime("%Y-%m-%dT%H%M")
+    file_name = 'results/mlexperiments-multiclass-svm' + datetime.now().strftime("%Y-%m-%dT%H%M")
     file = open(file_name, 'a')
     file.write('Experimento #'+ str(i + 1))
     file.write('\n')
