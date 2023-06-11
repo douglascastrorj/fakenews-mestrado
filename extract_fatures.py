@@ -68,34 +68,11 @@ def get_embeddings(text, BERT_MODEL = 'bert-base-uncased'):
         # https://huggingface.co/transformers/model_doc/bert.html#bertmodel
         hidden_states = outputs[2]
 
-        # print ("Number of layers:", len(hidden_states), "  (initial embeddings + 12 BERT layers)")
-        layer_i = 0
-
-        # print ("Number of batches:", len(hidden_states[layer_i]))
-        batch_i = 0
-
-        # print ("Number of tokens:", len(hidden_states[layer_i][batch_i]))
-        token_i = 0
-
-        # print ("Number of hidden units:", len(hidden_states[layer_i][batch_i][token_i]))
-
-
-        # For the 5th token in our sentence, select its feature values from layer 5.
-        token_i = 5
-        layer_i = 5
-        vec = hidden_states[layer_i][batch_i][token_i]
-
-        # Plot the values as a histogram to show their distribution.
-        # plt.figure(figsize=(10,10))
-        # plt.hist(vec, bins=200)
-        # plt.show()
-
         # Concatenate the tensors for all layers. We use `stack` here to
         # create a new dimension in the tensor.
         token_embeddings = torch.stack(hidden_states, dim=0)
 
         token_embeddings.size()
-
 
         # Remove dimension 1, the "batches".
         token_embeddings = torch.squeeze(token_embeddings, dim=1)
@@ -113,17 +90,17 @@ def get_embeddings(text, BERT_MODEL = 'bert-base-uncased'):
         # `token_embeddings` is a [22 x 12 x 768] tensor.
 
         # For each token in the sentence...
-        for token in token_embeddings:
+        # for token in token_embeddings:
             
-            # `token` is a [12 x 768] tensor
+        #     # `token` is a [12 x 768] tensor
 
-            # Concatenate the vectors (that is, append them together) from the last 
-            # four layers.
-            # Each layer vector is 768 values, so `cat_vec` is length 3,072.
-            cat_vec = torch.cat((token[-1], token[-2], token[-3], token[-4]), dim=0)
+        #     # Concatenate the vectors (that is, append them together) from the last 
+        #     # four layers.
+        #     # Each layer vector is 768 values, so `cat_vec` is length 3,072.
+        #     cat_vec = torch.cat((token[-1], token[-2], token[-3], token[-4]), dim=0)
             
-            # Use `cat_vec` to represent `token`.
-            token_vecs_cat.append(cat_vec)
+        #     # Use `cat_vec` to represent `token`.
+        #     token_vecs_cat.append(cat_vec)
 
         # print ('Shape is: %d x %d' % (len(token_vecs_cat), len(token_vecs_cat[0])))
         
